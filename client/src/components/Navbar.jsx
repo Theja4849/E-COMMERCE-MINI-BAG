@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="space-x-4 flex items-center">
           <Link to="/products" className="hover:underline">Products</Link>
           <Link to="/cart" className="relative flex items-center group">
-            <FiShoppingCart className="w-6 h-6" />
+            <FiShoppingCart className="w-5 h-5" />
             {cartCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1.5 py-0.5 min-w-[1.25rem] text-center">
                 {cartCount}

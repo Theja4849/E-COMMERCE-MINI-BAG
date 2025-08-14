@@ -1,26 +1,38 @@
 
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateQuantity, removeFromCart, clearCart } from '../slices/cartSlice';
+import { fetchCart, updateQuantity, removeFromCart, clearCart } from '../slices/cartSlice';
 import { Link } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
 import toast from 'react-hot-toast';
 
 const Cart = () => {
   const dispatch = useDispatch();
+
   const cartItems = useSelector((state) => state.cart.items || []);
   const products = useSelector((state) => state.products.items || []);
 
-  const getProduct = (id) => products.find((p) => p.id === id) || {};
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
 
-  const handleQuantityChange = (productId, value, stock) => {
-    const qty = Math.max(1, Math.min(stock, Number(value)));
-    dispatch(updateQuantity({ productId, quantity: qty }));
+  const getProduct = (productId) => {
+    // item.Product is included from backend, fallback to products slice if needed
+    return (
+      cartItems.find(i => i.productId === productId)?.Product ||
+      products.find(p => p.id === productId) ||
+      {}
+    );
   };
 
-  const handleRemove = (productId) => {
-    dispatch(removeFromCart(productId));
+  const handleQuantityChange = (item, value, stock) => {
+    const qty = Math.max(1, Math.min(stock, Number(value)));
+    dispatch(updateQuantity({ id: item.id, quantity: qty }));
+  };
+
+  const handleRemove = (id) => {
+    dispatch(removeFromCart(id));
     toast.success('Product removed successfully!');
   };
 
@@ -47,7 +59,7 @@ const Cart = () => {
             {cartItems.map((item) => {
               const product = getProduct(item.productId);
               return (
-                <div key={item.productId} className="card flex flex-col sm:flex-row items-center gap-4">
+                <div key={item.id} className="card flex flex-col sm:flex-row items-center gap-4">
                   <img src={product.imageUrl} alt={product.name} className="w-24 h-24 object-cover rounded" />
                   <div className="flex-1">
                     <h3 className="font-semibold text-lg">{product.name}</h3>
@@ -57,12 +69,12 @@ const Cart = () => {
                       min="1"
                       max={product.stock}
                       value={item.quantity}
-                      onChange={e => handleQuantityChange(item.productId, e.target.value, product.stock)}
+                      onChange={e => handleQuantityChange(item, e.target.value, product.stock)}
                       className="border rounded px-2 py-1 w-16 ml-2"
                     />
                     <span className="ml-2">= {(product.price * item.quantity).toFixed(2)}</span>
                   </div>
-                  <button className="btn btn-outline" onClick={() => handleRemove(item.productId)}>Remove</button>
+                  <button className="btn btn-outline" onClick={() => handleRemove(item.id)}>Remove</button>
                 </div>
               );
             })}
