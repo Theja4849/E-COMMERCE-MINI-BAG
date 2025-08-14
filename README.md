@@ -61,7 +61,32 @@ E-COMMERCE/
 
 ---
 
-## Key Technologies
-- React, Redux Toolkit, Vite, Tailwind CSS
-- Node.js, Express, Sequelize, PostgreSQL
+
+## Screenshots
+
+Below are screenshots of the main features and pages of the Mini Bag Store web app:
+
+### Home Page
+![Home Page](client/public/home.png)
+
+### Product Listing
+![Products Page](client/public/products.png)
+
+### Product Details
+![Product Details](client/public/productDetails.png)
+
+### Add to Cart
+![Add to Cart](client/public/add-to-cart.png)
+
+### Product Pagination
+![Product Pagination](client/public/product_pagination.png)
+
+### Checkout
+![Checkout](client/public/checkout.png)
+
+### Orders
+![Orders](client/public/orders.png)
+
+### Orders Pagination
+![Orders Pagination](client/public/orders-pagination.png)
 
