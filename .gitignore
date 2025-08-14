@@ -1,0 +1,12 @@
+# Node modules
+node_modules/
+
+
+
+
+# Vite cache
+.vite
+
+# dotenv environment variables
+.env
+
