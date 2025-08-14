@@ -18,7 +18,6 @@ const Cart = () => {
   }, [dispatch]);
 
   const getProduct = (productId) => {
-    // item.Product is included from backend, fallback to products slice if needed
     return (
       cartItems.find(i => i.productId === productId)?.Product ||
       products.find(p => p.id === productId) ||
