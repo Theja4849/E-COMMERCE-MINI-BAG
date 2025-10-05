@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchOrders } from '../slices/ordersSlice';
-import Breadcrumbs from '../components/Breadcrumbs';
 
 
 const Orders = () => {
@@ -19,7 +18,7 @@ const Orders = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <Breadcrumbs />
+   
       <h2 className="text-2xl font-bold mb-4">Your Orders</h2>
       {status === 'loading' && <div>Loading...</div>}
       {status === 'failed' && <div className="text-red-500">{error}</div>}

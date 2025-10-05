@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Breadcrumbs from '../components/Breadcrumbs';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../slices/cartSlice';
 import toast from 'react-hot-toast';
@@ -46,7 +45,7 @@ const ProductDetails = () => {
 
   return (
     <div className="container mx-auto p-4 max-w-2xl">
-      <Breadcrumbs />
+   
       <div className="flex flex-col md:flex-row gap-6 items-center">
         <img src={product.imageUrl} alt={product.name} className="w-64 h-64 object-cover rounded" />
         <div>

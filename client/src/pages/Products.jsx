@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../slices/productsSlice';
 import { Link } from 'react-router-dom';
-import Breadcrumbs from '../components/Breadcrumbs';
 import { HiSearch } from "react-icons/hi";
 
 const Products = () => {
@@ -29,7 +28,7 @@ const Products = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <Breadcrumbs />
+     
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-bold">Products</h2>
         <div className="relative w-64">
@@ -61,7 +60,7 @@ const Products = () => {
           </div>
         ))}
       </div>
-      {/* Pagination Controls */}
+      //Pagination Controls 
       <div className="flex justify-center mt-8 gap-2">
         {Array.from({ length: totalPages }, (_, i) => i + 1).map(num => (
           <button

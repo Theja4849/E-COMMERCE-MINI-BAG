@@ -6,7 +6,6 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { clearCart } from '../slices/cartSlice';
 import { useNavigate } from 'react-router-dom';
-import Breadcrumbs from '../components/Breadcrumbs';
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.cart.items || []);
@@ -58,7 +57,7 @@ const Checkout = () => {
 
   return (
     <div className="container mx-auto p-4 max-w-lg">
-      <Breadcrumbs />
+      
       <h2 className="text-2xl font-bold mb-4">Checkout</h2>
       <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded shadow">
         <div>

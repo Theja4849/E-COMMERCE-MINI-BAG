@@ -1,10 +1,7 @@
-
-
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCart, updateQuantity, removeFromCart, clearCart } from '../slices/cartSlice';
 import { Link } from 'react-router-dom';
-import Breadcrumbs from '../components/Breadcrumbs';
 import toast from 'react-hot-toast';
 
 const Cart = () => {
@@ -47,7 +44,7 @@ const Cart = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <Breadcrumbs />
+     
       <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
       {cartItems.length === 0 ? (
         <div className="mb-4">Your cart is empty. <Link to="/products" className="text-violet-700 underline">Go to Products</Link></div>
