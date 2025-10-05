@@ -3,7 +3,7 @@ import { Sequelize } from 'sequelize';
 
 dotenv.config();
 
-
+//database connections configurations
 export const sequelize = new Sequelize(
       process.env.DB_NAME || 'minibag',
       process.env.DB_USER || 'postgres',
@@ -16,6 +16,7 @@ export const sequelize = new Sequelize(
       }
     );
 
+    // Test the database connection
 export async function connectDB() {
   try {
     await sequelize.authenticate();

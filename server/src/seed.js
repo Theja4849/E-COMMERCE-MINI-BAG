@@ -51,9 +51,7 @@ async function run() {
         }
   } catch (error) {
     console.error('Error seeding database:', error);
-  } finally {
-    await sequelize.close();
-  }
+  } 
 }
 
 run();

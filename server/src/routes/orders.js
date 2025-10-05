@@ -5,7 +5,7 @@ import Product from '../models/Product.js';
 
 const router = Router();
 
-// GET /orders - List all orders with pagination
+//  List all orders with pagination
 router.get('/', async (req, res) => {
   try {
     let page = parseInt(req.query.page, 10) || 1;
@@ -39,7 +39,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /orders/:id - Get order details with items
+//  Get order details with items
 router.get('/:id', async (req, res) => {
   try {
     const order = await Order.findByPk(req.params.id, {

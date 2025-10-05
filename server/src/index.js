@@ -1,4 +1,3 @@
-// Entry point for the server (ESM)
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
@@ -12,14 +11,19 @@ app.use(cors())
 
 
 app.use('/api/v1', routes);
+
+//check route
 app.get('/', (req, res) => {
   res.send('Welcome to mini-bag website');
 });
 
+//port number
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
+
+//call database file
 dbInit();
 

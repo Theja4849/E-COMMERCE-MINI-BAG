@@ -21,20 +21,21 @@ Product_Router.get('/', async (req, res) => {
 
     const offset = (page - 1) * limit;
 
-    // ----- Sorting -----
+   //sorting
     const sortBy = ALLOWED_SORT_FIELDS.includes(req.query.sortBy)
       ? req.query.sortBy
       : 'id';
     const sortOrder = req.query.sortOrder?.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
 
-    // ----- Search -----
+    //search
     const where = {};
     const search = req.query.search?.trim();
     if (search) {
       where.name = { [Op.iLike]: `%${search}%` };
     }
 
-    // ----- Query -----
+
+    //query
     const { count, rows } = await Product.findAndCountAll({
       where,
       limit,
@@ -42,7 +43,7 @@ Product_Router.get('/', async (req, res) => {
       order: [[sortBy, sortOrder]],
     });
 
-    // ----- Response -----
+   
     res.json({
       success: true,
       data: rows,
@@ -57,7 +58,7 @@ Product_Router.get('/', async (req, res) => {
       },
     });
   } catch (error) {
-    console.error(`[GET /products] ${error.message}`, { stack: error.stack });
+   console.error(error.message)
     res.status(500).json({
       success: false,
       error: 'Internal server error',
@@ -65,7 +66,7 @@ Product_Router.get('/', async (req, res) => {
   }
 });
 
-// GET /products/:id
+// GET product by Id
 Product_Router.get('/:id', async (req, res) => {
   try {
     const product = await Product.findByPk(req.params.id);
@@ -74,7 +75,7 @@ Product_Router.get('/:id', async (req, res) => {
     }
     res.json({ success: true, data: product });
   } catch (error) {
-    console.error(`[GET /products/:id] ${error.message}`, { stack: error.stack });
+    console.error(error.message);
     res.status(500).json({
       success: false,
       error: 'Internal server error',

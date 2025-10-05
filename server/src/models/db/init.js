@@ -7,7 +7,7 @@ async function init() {
 
     const isDev = false;    
     
-    await Product.sync({ alter: isDev });
+   await Product.sync({ alter: isDev });
    await CartItem.sync({ alter: isDev });
    await Order.sync({ alter: isDev });
    await OrderItem.sync({ alter: isDev });
